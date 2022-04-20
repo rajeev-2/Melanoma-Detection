@@ -1,19 +1,17 @@
 # Melanoma Detection
 
-> Skin cancer detection with artificial intelligence. We analysed different convolutional neural networks for melanoma detection to select the most accurate method for this purpose. In our solution, we used different base models with the same top layers to detect melanoma images from others images.
-
-Bemutató videó: https://youtu.be/qg0tBphAYGA
+> Melanoma type of Skin cancer detection with different convolutional neural networks. In our solution, we used different base models with the same top layers to detect melanoma images from others images. There are 9 different classes of skin cancer in the assignment.
 
 ## Table of contents
 
 * Melanoma Detection
-   * Table of contents
    * General info
    * Directory structure and files
    * Technologies
    * Setup
    * Results
    * Contact
+   * References
 
 ## General info
 
@@ -23,17 +21,11 @@ Among skin cancer diseases, melanoma is one of the most common and most dangerou
 
 ## Directory structure and files
 
+Images can be downloaded from the below link
+https://drive.google.com/file/d/1xLfSQUGDl8ezNNbUkpuHOYvSpTyxVhCs/view
 
-![directory structure](images/directorystructure.png)
-
-
-The used dataset can be downloaded here:
-
-https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/DBW86T
-
-The full article is available here:
-
-https://www.nature.com/articles/sdata2018161
+In the assignment, Images uploaded through Google drive
+'/content/gdrive'
 
 
 
@@ -48,56 +40,34 @@ https://www.nature.com/articles/sdata2018161
 
 ## Setup
 
-1. Dataset is stored in the drive as shown in the directory structure section.
+1. Dataset is stored in the google drive as shown in the directory structure section.
 
 2. Mount data.
 
    ```python
    from google.colab import drive
-   drive.mount('/content/drive/')
+   drive.mount('/content/gdrive')
    ```
 
-3. Each developer set their root path.
-
-   ```python
-   root_path = '/content/drive/My Drive/example_folder'
-   ```
-
-4. To help easier usage both for developers and spectators, we created a logical value called “developer” that sets whether the code will make changes in the structure of the dataset or not. Setting this value to False means every block is safely runnable to look at the results only.
-
-   ```python
-   # Set False if you just want to see the results.
-   # Set True if you want to make changes in the project.
-   developer = False
-   ```
-
-5. In our project you can use two different base models, EfficientNetB0 and InceptionV3. Select the desired base model with model_id to train and evaluate the model with the selected base.
-
-   ```python
-   # Set 0 if you want to use EfficientNet based model.
-   # Set 1 if you want to use InceptionV3 based mofel.
-   model_id = 0
-   ```
-
+3. Path to Train and Test data sets were linked from the gdrive itself
    
 
 ## Results
-
-With the current hyperparametrization, the models performed as the followings:
-
-| Base Models    | Loss   | Accuracy |
-| -------------- | ------ | -------- |
-| EfficientNetB0 | 0.3233 | 87.84 %  |
-| InceptionV3    | 0.4101 | 82.43 %  |
-
+The different models performed as the followings:
+* Base model was overfitting with big difference in Training and Validataion dataset accuracies. The validation set accuracy was very low (~52%)
+* With some augmentation technique and Dropout laters, the overfitting was somewhat resolved in 2nd model, but the sccuracies of training also went down (~67%) with no improvement in validation set accuracies. Hence case of Underfitting
+* Class imbalance was present, as seen in the bar chart and we need to address this issue with further augmentation
+* For Final model, Augmentor library was used and 500 Images were added to each class to remove class imbalance. This helped, as both training and Validation accuracies increased significantly. Validation accuracy was ~79% after running the model for 30 epochs
 
 
 ## Contact
 
-created by Viktor Horváth, Beatrix Koltai and Adrienn Horváth
+created by Rajeev Ranjan
+https://github.com/rajeev-2/Melanoma-Detection
 
-QuickMaths
 
-BME Copyright
+## References
 
-2020.12.11.
+Stackoverflow
+Kaggle
+Upgrad course contents
