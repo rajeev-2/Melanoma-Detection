@@ -62,12 +62,12 @@ The different models performed as the followings:
 
 ## Contact
 
-created by Rajeev Ranjan
-https://github.com/rajeev-2/Melanoma-Detection
+* created by Rajeev Ranjan
+* https://github.com/rajeev-2/Melanoma-Detection
 
 
 ## References
 
-Stackoverflow
-Kaggle
-Upgrad course contents
+* Stackoverflow
+* Kaggle
+* Upgrad course contents
